@@ -1,0 +1,64 @@
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky" (window:scroll)="windowScroll()" [class]="navClass"
+  [ngClass]="{'tagline-height': sliderTopbar == true}">
+  <div class="container">
+    <!-- Logo container-->
+    <div>
+      <a class="logo" routerLink="/" *ngIf="navClass !== 'nav-light'">
+        Daltek
+      </a>
+
+
+      <a class="logo" routerLink="/" *ngIf="navClass === 'nav-light'">
+        Daltek
+      </a>
+    </div>
+
+    <span *ngIf="!buttonList && !isdeveloper && !shopPages">
+      <div class="buy-button">
+        <ng-template [ngIf]="navClass === 'nav-light'">
+          <a href="javascript: void(0);" class="btn btn-primary login-btn-primary">Login</a>
+          <a class="btn btn-primary login-btn-primary" routerLink="/auth/login">Login</a>
+        </ng-template>
+        <ng-template [ngIf]="navClass !== 'nav-light'">
+          <a class="btn btn-primary login-btn-primary" routerLink="/auth/login">Login</a>
+        </ng-template>
+      </div>
+    </span>
+    <!--end login button-->
+
+    <div class="menu-extras">
+      <div class="menu-item">
+        <!-- Mobile menu toggle-->
+        <a class="navbar-toggle" id="isToggle" (click)="toggleMenu()" [ngClass]="{'open': isCondensed === true}">
+          <div class="lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+        <!-- End mobile menu toggle-->
+      </div>
+    </div>
+
+    <div id="navigation">
+      <!-- Navigation Menu-->
+      <ul class="navigation-menu" [class]="navClass">
+        <li><a routerLink="/" class="nav-link-ref">Home</a></li>
+        <li><a class="nav-link-ref" routerLink="/other/page-comming">Portfolio</a></li>
+        <li><a routerLink="/other/page-comming" class="nav-link-ref">Blog</a></li>
+        <li><a routerLink="page-contact-detail" class="nav-link-ref">Contact</a></li>
+      </ul>
+      <!--end navigation menu-->
+      <div class="buy-menu-btn d-none">
+        <a class="btn btn-primary login-btn-primary" routerLink="/auth/login">Login</a>
+      </div>
+      <!--end login button-->
+      <!--end login button-->
+    </div>
+    <!--end navigation-->
+  </div>
+  <!--end container-->
+</header>
+<!--end header-->
+<!-- Navbar End -->
