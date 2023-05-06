@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ release ]
+  pull_request:
+    branches: [ release ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/release'
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: npm i
+
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          switches: -avzr --delete
+          path: ./*
+          remote_path: /home/ubuntu/blog
+          remote_host: 15.237.23.159
+          remote_user: ubuntu
+          remote_key: "${{ secrets.BLOG }}"
+
