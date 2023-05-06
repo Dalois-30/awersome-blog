@@ -25,7 +25,7 @@ jobs:
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
-        with:
+        with: 
           switches: -avzr --delete
           path: ./*
           remote_path: /home/ubuntu/blog
