@@ -8,8 +8,8 @@ import { IndexPersonalComponent } from './index-personal/index-personal.componen
 
 const routes: Routes = [
   { path: '', component: IndexPersonalComponent },
-  { path: 'index-blog', component: PageBlogListSidebarComponent },
-  { path: 'page-blog-detail', component: PageBlogDetailComponent },
+  { path: 'blog', component: PageBlogListSidebarComponent },
+  { path: 'blog/:id', component: PageBlogDetailComponent },
   { path: 'page-contact-detail', component: PageContactDetailComponent },
   { path: '#', component: SwitcherComponent },
 ];

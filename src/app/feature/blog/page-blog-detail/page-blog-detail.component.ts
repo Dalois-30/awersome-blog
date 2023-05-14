@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-blog-detail',
@@ -11,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
  */
 export class PageBlogDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  async init() {
+    const postId = this._route.snapshot.params['id'];
   }
 
 }

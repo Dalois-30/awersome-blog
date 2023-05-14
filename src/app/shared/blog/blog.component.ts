@@ -7,14 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BlogComponent implements OnInit { 
 
-  @Input() blogData!: Array<{
-    image: string;
-    title: string;
-    like: string;
-    message: string;
-    name: string;
-    date: string;
-  }>;
+  @Input() blogData!: Array<any>;
 
   constructor() { }
 

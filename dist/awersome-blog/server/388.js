@@ -32,7 +32,7 @@ const routes = [{
   path: '',
   component: _index_personal_index_personal_component__WEBPACK_IMPORTED_MODULE_4__.IndexPersonalComponent
 }, {
-  path: 'index-blog',
+  path: 'blog',
   component: src_app_feature_blog_page_blog_list_sidebar_page_blog_list_sidebar_component__WEBPACK_IMPORTED_MODULE_1__.PageBlogListSidebarComponent
 }, {
   path: 'page-blog-detail',

@@ -15,6 +15,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { allIcons } from 'angular-feather/icons';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxTypedJsModule } from 'ngx-typed-js';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
     FormsModule,
     NgxTypedJsModule, // utile
     LightboxModule,
+    HttpClientModule,
   ],
   exports: [
     ScrollspyDirective,
@@ -51,7 +53,8 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
     NgbNavModule,
     FormsModule,
     NgxTypedJsModule,
-    LightboxModule
+    LightboxModule,
+    HttpClientModule,
   ]
 })
 

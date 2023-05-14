@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../blog.service';
+import { lastValueFrom } from 'rxjs';
 
 interface blog {
   image: string;
@@ -24,75 +26,81 @@ export class PageBlogListSidebarComponent implements OnInit {
   /**
    * Blog Data
    */
-  blogListData: blog[] = [
-    {
-      image: "assets/images/blog/03.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/blog/02.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/work/16.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/blog/03.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/work/18.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/work/19.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/images/work/13.jpg",
-      title: "Design your apps in your own way",
-      content: "Due to its widespread use as filler text for layouts, non-readability",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    }
-  ];
+  // blogListData: blog[] = [
+  //   {
+  //     image: "assets/images/blog/03.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/blog/02.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/work/16.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/blog/03.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/work/18.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/work/19.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   },
+  //   {
+  //     image: "assets/images/work/13.jpg",
+  //     title: "Design your apps in your own way",
+  //     content: "Due to its widespread use as filler text for layouts, non-readability",
+  //     like: "33",
+  //     message: "08",
+  //     name: "Calvin Carlo",
+  //     date: "13th August, 2019"
+  //   }
+  // ];
 
-  constructor() { }
+  blogListData: any;
+  constructor(
+    private _blogService: BlogService
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.blogListData = await lastValueFrom(this._blogService.getAllPosts());
+    console.log("blogListData", this.blogListData);
+    
   }
 
 }
