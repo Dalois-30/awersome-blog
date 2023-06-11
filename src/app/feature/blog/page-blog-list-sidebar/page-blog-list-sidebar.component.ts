@@ -98,7 +98,7 @@ export class PageBlogListSidebarComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.blogListData = await lastValueFrom(this._blogService.getAllPosts());
+    this.blogListData = await lastValueFrom(this._blogService.getAllPosts(0));
     console.log("blogListData", this.blogListData);
     
   }
