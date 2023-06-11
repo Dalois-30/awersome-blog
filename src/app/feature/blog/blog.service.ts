@@ -13,10 +13,16 @@ export class BlogService {
     private _http: HttpClient,
   ) { }
 
-  getAllPosts(page: number){
-    return this._http.get<any>(`${this._apiUrl}/posts?page=${page}&limit=10`).pipe(
+  getAllCategories(page: number){
+    return this._http.get<any>(`${this._apiUrl}/category?page=${page}&limit=10`).pipe(
       shareReplay(1),
       map(resp => resp.data)
+    )
+  }
+
+  getAllPosts(page: number){
+    return this._http.get<any>(`${this._apiUrl}/posts?page=${page}&limit=10`).pipe(
+      shareReplay(1)
     )
   }
 

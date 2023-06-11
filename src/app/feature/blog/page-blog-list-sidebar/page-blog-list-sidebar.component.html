@@ -8,7 +8,7 @@
           <div class="page-next">
             <nav aria-label="breadcrumb" class="d-inline-block">
               <ul class="breadcrumb bg-white rounded shadow mb-0">
-                <li class="breadcrumb-item"><a routerLink="/index">Dalois</a></li>
+                <li class="breadcrumb-item"><a routerLink="/index">Daltek</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Page</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Blog</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Blog List with Sidebar</li>
@@ -114,11 +114,7 @@
             <div class="widget mb-4 pb-2">
               <h5 class="widget-title">Categories</h5>
               <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                <li><a href="jvascript:void(0)">Finance</a> <span class="float-end">13</span></li>
-                <li><a href="jvascript:void(0)">Business</a> <span class="float-end">09</span></li>
-                <li><a href="jvascript:void(0)">Blog</a> <span class="float-end">18</span></li>
-                <li><a href="jvascript:void(0)">Corporate</a> <span class="float-end">20</span></li>
-                <li><a href="jvascript:void(0)">Investment</a> <span class="float-end">22</span></li>
+                <li *ngFor="let data of categoryListData"><a href="jvascript:void(0)">{{data.cat.name}}</a> <span class="float-end">{{data.cat.posts.length}}</span></li>
               </ul>
             </div>
             <!-- Categories -->
@@ -150,7 +146,7 @@
             <!-- RECENT POST -->
 
             <!-- TAG CLOUDS -->
-            <div class="widget mb-4 pb-2">
+            <!-- <div class="widget mb-4 pb-2">
               <h5 class="widget-title">Tags Cloud</h5>
               <div class="tagcloud mt-4">
                 <a href="jvascript:void(0)" class="rounded">Business</a>
@@ -164,7 +160,7 @@
                 <a href="jvascript:void(0)" class="rounded">Video</a>
                 <a href="jvascript:void(0)" class="rounded">Audio</a>
               </div>
-            </div>
+            </div> -->
             <!-- TAG CLOUDS -->
 
             <!-- SOCIAL -->
