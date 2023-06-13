@@ -14,6 +14,12 @@ export interface User {
     updated_at: Date;
 }
 
+export interface UserDecoded {
+    email: string;
+    id: string;
+    role: UserRoles;
+}
+
 export enum UserRoles {
     'USER' = 'User',
     'ADMIN' = 'Admin',

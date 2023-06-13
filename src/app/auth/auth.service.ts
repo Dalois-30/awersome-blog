@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map, shareReplay, tap } from 'rxjs/operators';
-import { User } from '../feature/blog/dto/user.dto';
+import { User, UserDecoded } from '../feature/blog/dto/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   /* Getting decoded token value */
-  get decodedToken(): User | any {
+  get decodedToken(): UserDecoded | any {
     return this.jwtHelper.decodeToken(this.currentUser);
   }
 

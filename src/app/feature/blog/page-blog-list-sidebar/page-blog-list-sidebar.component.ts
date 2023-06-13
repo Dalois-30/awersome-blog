@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
 import { lastValueFrom } from 'rxjs';
 import { Category, CategoryResponse } from '../dto/category.dto';
+import { AuthService } from 'src/app/auth/auth.service';
 
 interface blog {
   image: string;
@@ -41,7 +42,7 @@ export class PageBlogListSidebarComponent implements OnInit {
     console.log("blogListData", this.blogListData);
     this.categoryListData = await lastValueFrom(this._blogService.getAllCategories(0));
     console.log('categoryListData', this.categoryListData);
-
   }
+
 
 }

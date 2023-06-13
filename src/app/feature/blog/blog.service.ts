@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, shareReplay } from 'rxjs';
+import { AddCommentDto } from './dto/add-comment.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,12 @@ export class BlogService {
     return this._http.get<any>(`${this._apiUrl}/comments?postId=${uuid}`).pipe(
       shareReplay(1),
       map(resp => resp.data)
+    )
+  }
+
+  addComment(addComment: AddCommentDto){
+    return this._http.post<any>(`${this._apiUrl}/comments/add-comment`, addComment).pipe(
+      shareReplay(1)
     )
   }
 }
