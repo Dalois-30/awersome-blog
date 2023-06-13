@@ -16,12 +16,13 @@ import { Comments } from '../dto/comment.dto';
  */
 export class PageBlogDetailComponent implements OnInit {
 
-  post: PostResponse
+  post: PostResponse;
   comments: Comments[]
   constructor(
     private _route: ActivatedRoute,
     private _blogService: BlogService
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
     this.init()

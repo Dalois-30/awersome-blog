@@ -9,7 +9,7 @@ import { FeatherModule } from 'angular-feather';
 import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
 import { BlogComponent } from './blog/blog.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDropdownModule, NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { allIcons } from 'angular-feather/icons';
@@ -38,6 +38,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NgxTypedJsModule, // utile
     LightboxModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ScrollspyDirective,
@@ -55,6 +57,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NgxTypedJsModule,
     LightboxModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 
