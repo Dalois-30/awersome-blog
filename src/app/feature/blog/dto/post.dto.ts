@@ -11,7 +11,7 @@ export interface Post {
     tags: string;
     category: Category;
     user: User;
-    comments: Comments
+    comments: Comments[]
     created_at: Date;
     updated_at: Date;
 }

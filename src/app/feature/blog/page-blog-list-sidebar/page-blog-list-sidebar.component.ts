@@ -3,6 +3,7 @@ import { BlogService } from '../blog.service';
 import { lastValueFrom } from 'rxjs';
 import { Category, CategoryResponse } from '../dto/category.dto';
 import { AuthService } from 'src/app/auth/auth.service';
+import { PostResponse } from '../dto/post.dto';
 
 interface blog {
   image: string;

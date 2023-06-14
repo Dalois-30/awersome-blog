@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { AddCommentDto } from '../dto/add-comment.dto';
 import { SpinnerAction } from 'src/app/auth/auth-login/auth-login.component';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryResponse } from '../dto/category.dto';
 
 @Component({
   selector: 'app-page-blog-detail',
@@ -24,7 +25,9 @@ export class PageBlogDetailComponent implements OnInit {
 
   content = new FormControl();
   post: PostResponse;
-  comments: Comments[]
+  comments: Comments[];
+  blogListData: any;
+  categoryListData: CategoryResponse[];
   constructor(
     private _route: ActivatedRoute,
     private _blogService: BlogService,
@@ -45,6 +48,11 @@ export class PageBlogDetailComponent implements OnInit {
     console.log("post", this.post);
     this.comments = await lastValueFrom(this._blogService.getPostComment(postId))
     console.log("comment", this.comments);
+    this.categoryListData = await lastValueFrom(this._blogService.getAllCategories(0));
+    console.log('categoryListData', this.categoryListData);
+    this._blogService.getAllPosts(0).subscribe((posts) => {
+      this.blogListData = posts.data;
+    });
   }
 
     /*show and hide spinner*/

@@ -47,15 +47,15 @@
                   <img src="{{data.image}}" class="img-fluid" alt="">
                   <div class="overlay bg-dark"></div>
                   <div class="author">
-                    <small class="text-light user d-block"><i class="uil uil-user"></i> {{data.post.user.email}}</small>
-                    <small class="text-light date"><i class="uil uil-calendar-alt"></i> {{data.post.update_at | date}}</small>
+                    <small class="text-light user d-block"><i class="uil uil-user"></i> {{data.post.user.username}}</small>
+                    <small class="text-light date"><i class="uil uil-calendar-alt"></i> {{data.post.created_at | date}}</small>
                   </div>
                 </div>
                 <!--end col-->
 
                 <div class="col-md-6">
                   <div class="card-body content">
-                    <h5><a href="javascript:void(0)" class="card-title title text-dark">{{data.post.title}}</a></h5>
+                    <h5><a href="javascript:void(0)" class="card-title title text-dark">{{data.post.title | titlecase}}</a></h5>
                     <p class="text-muted mb-0">{{data.post.content}}</p>
                     <div class="post-meta d-flex justify-content-between mt-3">
                       <ul class="list-unstyled mb-0">
@@ -114,7 +114,8 @@
             <div class="widget mb-4 pb-2">
               <h5 class="widget-title">Categories</h5>
               <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                <li *ngFor="let data of categoryListData"><a href="jvascript:void(0)">{{data.cat.name}}</a> <span class="float-end">{{data.cat.posts.length}}</span></li>
+                <li *ngFor="let data of categoryListData"><a href="jvascript:void(0)">{{data.cat.name | titlecase}}</a> <span
+                    class="float-end">{{data.cat.posts.length}}</span></li>
               </ul>
             </div>
             <!-- Categories -->
@@ -123,23 +124,13 @@
             <div class="widget mb-4 pb-2">
               <h5 class="widget-title">Recent Post</h5>
               <div class="mt-4">
-                <div class="clearfix post-recent">
-                  <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                        src="assets/images/blog/07.jpg" class="img-fluid rounded"></a></div>
-                  <div class="post-recent-content float-start"><a href="jvascript:void(0)">Consultant Business</a><span
-                      class="text-muted mt-2">15th June, 2019</span></div>
-                </div>
-                <div class="clearfix post-recent">
-                  <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                        src="assets/images/blog/08.jpg" class="img-fluid rounded"></a></div>
-                  <div class="post-recent-content float-start"><a href="jvascript:void(0)">Look On The Glorious
-                      Balance</a> <span class="text-muted mt-2">15th June, 2019</span></div>
-                </div>
-                <div class="clearfix post-recent">
-                  <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                        src="assets/images/blog/01.jpg" class="img-fluid rounded"></a></div>
-                  <div class="post-recent-content float-start"><a href="jvascript:void(0)">Research Financial.</a> <span
-                      class="text-muted mt-2">15th June, 2019</span></div>
+                <div class="clearfix post-recent" *ngFor="let post of blogListData; let i = index" [routerLink]=[post.post.id]>
+                  <div *ngIf="i<3">
+                    <div class="post-recent-thumb float-start"> <a [routerLink]=[post.post.id]> <img alt="img"
+                          src={{post.image}} class="img-fluid rounded"></a></div>
+                    <div class="post-recent-content float-start"><a [routerLink]=[post.post.id]>{{post.post.title | titlecase}}</a><span
+                        class="text-muted mt-2">{{post.post.created_at | date}}</span></div>
+                  </div>
                 </div>
               </div>
             </div>
