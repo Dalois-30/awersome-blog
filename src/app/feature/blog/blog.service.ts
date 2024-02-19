@@ -15,14 +15,14 @@ export class BlogService {
   ) { }
 
   getAllCategories(page: number){
-    return this._http.get<any>(`${this._apiUrl}/category?page=${page}&limit=10`).pipe(
+    return this._http.get<any>(`${this._apiUrl}/category/get-all?page=${page}&limit=10`).pipe(
       shareReplay(1),
       map(resp => resp.data)
     )
   }
 
   getAllPosts(page: number){
-    return this._http.get<any>(`${this._apiUrl}/posts?page=${page}&limit=10`).pipe(
+    return this._http.get<any>(`${this._apiUrl}/posts/get-all?page=${page}&limit=10`).pipe(
       shareReplay(1)
     )
   }

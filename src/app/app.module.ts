@@ -13,6 +13,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MasterPageComponent } from './core/components/master-page/master-page.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -30,7 +32,11 @@ import { MasterPageComponent } from './core/components/master-page/master-page.c
     NgbModule,
     ToastrModule.forRoot(),
     
-    SharedModule
+    SharedModule,
+    
+    StoreModule.forRoot({}, {}),
+    
+    EffectsModule.forRoot([])
   ],
   exports: [
     FeatherModule,
