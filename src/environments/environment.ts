@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://backend-blog.daltek.tech',
+  apiUrl: 'http://localhost:3000',
 };
 
 /*

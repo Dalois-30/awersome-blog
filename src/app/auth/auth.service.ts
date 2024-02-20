@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.httpClient.post<any>(this.host + '/auth/register/', { email, password }, { observe: 'body' }).pipe(
+    return this.httpClient.post<any>(this.host + '/auth/login/', { email, password }, { observe: 'body' }).pipe(
       shareReplay(1),
       tap({
         next: (response: any) => {
@@ -56,7 +56,7 @@ export class AuthService {
   }
 
   register(email: string, username: string, password: string): Observable<any> {
-    return this.httpClient.post<any>(this.host + '/auth/signup/', { email, password, username }, { observe: 'body' });
+    return this.httpClient.post<any>(this.host + '/auth/register/', { email, password, username }, { observe: 'body' });
   }
 
   saveToken(jwt: any): boolean {
