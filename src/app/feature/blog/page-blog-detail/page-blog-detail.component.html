@@ -151,22 +151,22 @@
             <h5 class="card-title mb-0">Related Posts :</h5>
 
             <div class="row">
-              <div class="col-lg-6 mt-4 pt-2" *ngFor="let post of blogListData; let i = index" [routerLink]="['/blog/'+post.post.id]">
+              <div class="col-lg-6 mt-4 pt-2" *ngFor="let post of blogListData; let i = index"  (click)="navigateBy(post.post.id)">
                 <div class="card blog rounded border-0 shadow" *ngIf="i<2">
                   <div class="position-relative">
-                    <img src={{post.image}} class="card-img-top rounded-top" alt="...">
+                    <img src={{post.image}} (click)="navigateBy(post.post.id)" class="card-img-top rounded-top" alt="...">
                     <div class="overlay rounded-top bg-dark"></div>
                   </div>
-                  <div class="card-body content">
+                  <div class="card-body content" (click)="navigateBy(post.post.id)">
                     <h5><a href="javascript:void(0)" class="card-title title text-dark">{{post.post.title | titlecase}}</a></h5>
-                    <div class="post-meta d-flex justify-content-between mt-3">
+                    <div class="post-meta d-flex justify-content-between mt-3"> 
                       <ul class="list-unstyled mb-0">
                         <!-- <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i
                               class="uil uil-heart me-1"></i>33</a></li> -->
                         <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i
                               class="uil uil-comment me-1"></i>{{post.post.comments.length}}</a></li>
                       </ul>
-                      <a [routerLink]="['/blog/'+post.post.id]" class="text-muted readmore">Read More <i
+                      <a class="text-muted readmore">Read More <i
                           class="uil uil-angle-right-b align-middle"></i></a>
                     </div>
                   </div>
@@ -214,11 +214,11 @@
             <div class="widget mb-4 pb-2">
               <h5 class="widget-title">Recent Post</h5>
               <div class="mt-4">
-                <div class="clearfix post-recent" *ngFor="let post of blogListData; let i = index" [routerLink]="['/blog/'+post.post.id]">
+                <div class="clearfix post-recent" *ngFor="let post of blogListData; let i = index" (click)="navigateBy(post.post.id)">
                   <div *ngIf="i<3">
-                    <div class="post-recent-thumb float-start"> <a [routerLink]="['/blog/'+post.post.id]"> <img alt="img"
+                    <div class="post-recent-thumb float-start"> <a (click)="navigateBy(post.post.id)"> <img alt="img"
                           src={{post.image}} class="img-fluid rounded"></a></div>
-                    <div class="post-recent-content float-start"><a [routerLink]="['/blog/'+post.post.id]">{{post.post.title | titlecase}}</a><span
+                    <div class="post-recent-content float-start"><a (click)="navigateBy(post.post.id)">{{post.post.title | titlecase}}</a><span
                         class="text-muted mt-2">{{post.post.created_at | date}}</span></div>
                   </div>
                 </div>

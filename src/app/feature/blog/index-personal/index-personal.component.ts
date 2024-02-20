@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Lightbox } from 'ngx-lightbox';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-index-personal',
@@ -14,8 +15,13 @@ import { Lightbox } from 'ngx-lightbox';
 export class IndexPersonalComponent implements OnInit {
 
   private _album = [];
+  postCount: number;
+  blogListData: any;
 
-  constructor(private _lightbox: Lightbox) {
+  constructor(
+    private _lightbox: Lightbox,
+    private _blogService: BlogService,
+  ) {
     for (let i = 1; i <= 6; i++) {
       const src = '../../../assets/images/personal/' + i + '.png';
       const caption = 'Image ' + i + ' caption here';
@@ -29,6 +35,11 @@ export class IndexPersonalComponent implements OnInit {
       this._album.push(album);
     }
   }
+
+  ngOnInit(): void {
+    this.init()
+  }
+
 
   workList = [
     {
@@ -62,6 +73,13 @@ export class IndexPersonalComponent implements OnInit {
       category: 'Blockchain'
     }
   ];
+
+  async init() {
+    this._blogService.getFirstsPosts(0, 3).subscribe((posts) => {
+      this.blogListData = posts.data;
+      this.postCount = posts.totalItems;
+    });
+  }
 
   open(index: number): void {
     // open lightbox
@@ -127,7 +145,5 @@ export class IndexPersonalComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-  }
 
 }

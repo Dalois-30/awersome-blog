@@ -10,6 +10,7 @@ import { AddCommentDto } from '../dto/add-comment.dto';
 import { SpinnerAction } from 'src/app/auth/auth-login/auth-login.component';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryResponse } from '../dto/category.dto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-page-blog-detail',
@@ -34,11 +35,12 @@ export class PageBlogDetailComponent implements OnInit {
     private _authService: AuthService,
     private toast: ToastrService,
     private _router: Router,
+    private _location: Location,
   ) { 
   }
 
   ngOnInit(): void {
-    this.init()
+    this.init();
   }
 
   async init() {
@@ -91,5 +93,10 @@ export class PageBlogDetailComponent implements OnInit {
         }
       },
     })
+  }
+
+  navigateBy(id: number) {
+    this._router.navigate(['/blog/'+id]);
+    this.init();
   }
 }

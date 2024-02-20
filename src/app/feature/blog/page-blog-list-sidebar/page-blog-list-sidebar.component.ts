@@ -5,6 +5,7 @@ import { Category, CategoryResponse } from '../dto/category.dto';
 import { AuthService } from 'src/app/auth/auth.service';
 import { PostResponse } from '../dto/post.dto';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 interface blog {
   image: string;
@@ -32,7 +33,8 @@ export class PageBlogListSidebarComponent implements OnInit {
   categoryListData: CategoryResponse[];
   constructor(
     private _blogService: BlogService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private _router: Router,
   ) { }
 
   //TODO: transformer la div sidebar en component partagé
@@ -67,6 +69,10 @@ export class PageBlogListSidebarComponent implements OnInit {
   // Fonction pour rendre le HTML sûr
   sanitizeHtml(html: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  navigateBy(id: number) {
+    this._router.navigate(['/blog/'+id]);
   }
 
 

@@ -20,6 +20,11 @@ export class BlogService {
       map(resp => resp.data)
     )
   }
+  getFirstsPosts(page: number, limit: number){
+    return this._http.get<any>(`${this._apiUrl}/posts/get-all?page=${page}&limit=${limit}`).pipe(
+      shareReplay(1)
+    )
+  }
 
   getAllPosts(page: number){
     return this._http.get<any>(`${this._apiUrl}/posts/get-all?page=${page}&limit=10`).pipe(
