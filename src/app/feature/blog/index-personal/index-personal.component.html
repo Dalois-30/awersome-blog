@@ -80,16 +80,16 @@
           </div>
           <!--end process box-->
           <div class="progress-box mt-4">
-            <h6 class="title text-muted">Data-scientist</h6>
+            <h6 class="title text-muted">React</h6>
             <div class="progress">
-              <div class="progress-bar position-relative bg-primary" style="width:70%;">
-                <div class="progress-value d-block text-muted h6">70%</div>
+              <div class="progress-bar position-relative bg-primary" style="width:75%;">
+                <div class="progress-value d-block text-muted h6">75%</div>
               </div>
             </div>
           </div>
           <!--end process box-->
           <div class="progress-box mt-4">
-            <h6 class="title text-muted">Angular / TypeScript</h6>
+            <h6 class="title text-muted">Angular</h6>
             <div class="progress">
               <div class="progress-bar position-relative bg-primary" style="width:75%;">
                 <div class="progress-value d-block text-muted h6">75%</div>
@@ -130,15 +130,15 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2" *ngFor="let item of workList; let i=index">
         <div class="card border-0 work-container work-modern position-relative d-block overflow-hidden rounded">
-          <div class="card-body p-0">
+          <div class="card-body p-0" (click)="open(i)">
             <img src="{{item.image }}" class="img-fluid" alt="work-image">
             <div class="overlay-work bg-dark"></div>
             <div class="content">
-              <h5 class="mb-0"><a routerLink="/page-work-detail" class="text-white title">{{item.title}}</a></h5>
+              <h5 class="mb-0"><a [href]="item.link" target="_blank" rel="noopener noreferrer" class="text-white title">{{item.title}}</a></h5>
               <h6 class="text-light tag mb-0">{{item.category}}</h6>
             </div>
             <div class="icons text-center">
-              <a (click)="open(i)" class="text-primary work-icon bg-white d-inline-block rounded-pill mfp-image">
+              <a [href]="item.link" target="_blank" rel="noopener noreferrer" class="text-primary work-icon bg-white d-inline-block rounded-pill mfp-image">
                 <i-feather name="external-link" class="fea icon-sm"></i-feather>
               </a>
             </div>

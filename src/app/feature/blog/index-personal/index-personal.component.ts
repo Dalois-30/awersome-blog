@@ -50,7 +50,8 @@ export class IndexPersonalComponent implements OnInit {
     {
       image: 'assets/images/personal/2.png',
       title: 'Mendo Cash',
-      category: 'NestJs'
+      category: 'NestJs',
+      link: 'https://cash.mendo.cm/'
     },
     {
       image: 'assets/images/personal/3.png',
